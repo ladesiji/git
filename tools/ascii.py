@@ -15,7 +15,7 @@ import argparse
 
 
 # 首先 构建命令行输入参数处理 ArgumentParser 实例
-parser = argparse.ArgumentPaser()
+parser = argparse.ArgumentParser()
 
 # 定义输入文件、输出文件、输出字符画的宽和高
 parser.add_argument("file")  #输入文件
@@ -33,7 +33,7 @@ IMG = args.file
 WIDTH = args.width
 
 # 输出字符画的高度
-HIGHT = args.height
+HEIGHT = args.height
 
 # 输出字符画的路径
 OUTPUT = args.output
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     # 首先使用PIL的 Image.open 打开图片文件，获得对象 im
     im = Image.open(IMG)
     # 使用 PIL 库的 im.resize() 调整图片大小 NEAREST 表示低质量的图片
-    im = im.resize((WIDTH, HEIGHI), Image.NEAREST)
+    im = im.resize((WIDTH, HEIGHT), Image.NEAREST)
     
     # 初始化输出的字符串
     txt = ""
