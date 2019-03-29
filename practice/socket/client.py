@@ -14,5 +14,6 @@ host = "192.168.43.1"       # 主机地址
 port = 8421                 # 设置端口号
 
 s.connect((host, port))
-print(s.recv(1024))
+s.send("我是客户端".encode('utf-8'))
+print(s.recv(1024).decode())
 s.close()
