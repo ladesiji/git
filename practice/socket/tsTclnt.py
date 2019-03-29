@@ -23,7 +23,7 @@ while True:
     if not data:
         break
     tcpCliSock.send(data.encode('utf-8'))
-    data = tcpCliSock.resv(BUFSIZ)
+    data = tcpCliSock.recv(BUFSIZ)
     if not data:
         break
     print(data.decode())

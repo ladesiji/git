@@ -3,7 +3,7 @@
 import socket
 from time import ctime
 
-HOST = ""
+HOST = "192.168.43.1"
 PORT = 8421
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
