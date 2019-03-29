@@ -10,7 +10,7 @@
 import socket               # 导入 socket 模块
 
 s = socket.socket()         # 创建 socket 对象
-host = 192.168.43.1         # 主机地址
+host = "192.168.43.1"       # 主机地址
 port = 8421                 # 设置端口号
 
 s.connect((host, port))
