@@ -9,7 +9,7 @@
 from socket import *
 from time import ctime
 
-HOST = '192.168.43.1'
+HOST = ''
 PORT = 9999
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
@@ -20,7 +20,7 @@ udpSerSock.bind(ADDR)
 while True:
     print('waiting for message...')
     data, addr = udpSerSock.recvfrom(BUFSIZ)
-    if data.decode() =='bye':
+    if data.decode('utf-8') =='bye':
         print('bye')
         break
     else:
