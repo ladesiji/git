@@ -7,7 +7,7 @@
 """
 
 from socket import *
-from time import ctime
+from time import ctime, sleep
 
 HOST = ''
 PORT = 9999
@@ -16,21 +16,30 @@ ADDR = (HOST, PORT)
 
 udpSerSock = socket(AF_INET, SOCK_DGRAM)
 udpSerSock.bind(ADDR)
+udpSerSock.setblocking(0)
 
+addr=''
 while True:
-    print('waiting for message...')
-    data, addr = udpSerSock.recvfrom(BUFSIZ)
-    if data.decode('utf-8') =='bye':
-        print('对方挂断对话')
-        break
-    if not data:
-        print(f"{addr}> {data.decode('utf-8')}")
+    # print('waiting for messagdde...')
+    try:
+        data, addr = udpSerSock.recvfrom(BUFSIZ)
+    except Exception:
+        sleep(1)
+        pass
+    else:
+        if data.decode('utf-8') =='bye':
+            print('对方挂断对话')
+            break
+        if not data:
+            print(f"{addr}> {data.decode('utf-8')}")
+    if not addr:
+        continue
     my_msg = input('> ')
+    if my_msg:
+        udpSerSock.sendto(my_msg.encode('utf-8'), addr)
     if my_msg == 'bye':
         print("主动挂断对话")
         break
-    if my_msg:
-        udpSerSock.sendto(my_msg.encode('utf-8'), addr)
 
 udpSerSock.close()
     
