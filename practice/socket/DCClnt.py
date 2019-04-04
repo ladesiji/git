@@ -27,8 +27,7 @@ while True:
         if data.decode == 'bye':
             print("服务器挂断对话")
             break
-        if not data:
-            print(f"{ADDR[0]}> {data.decode('utf-8')}")
+        print(f"{ADDR[0]}> {data.decode('utf-8')}")
     sendmsg = input("> ")
     if sendmsg:
         udpCliSock.sendto(sendmsg.encode('utf-8'), ADDR)

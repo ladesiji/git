@@ -20,7 +20,7 @@ udpSerSock.setblocking(0)
 
 addr=''
 while True:
-    # print('waiting for messagdde...')
+    print('waiting for messagdde...')
     try:
         data, addr = udpSerSock.recvfrom(BUFSIZ)
     except Exception:
@@ -30,8 +30,7 @@ while True:
         if data.decode('utf-8') =='bye':
             print('对方挂断对话')
             break
-        if not data:
-            print(f"{addr}> {data.decode('utf-8')}")
+        print(f"{addr}> {data.decode('utf-8')}")
     if not addr:
         continue
     my_msg = input('> ')
