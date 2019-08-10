@@ -37,7 +37,7 @@ class LinkList(object):
         if self.is_empty():
             print('linklist is empty.')
             return False
-        elif key < 0 or key > self.getlength():
+        elif key < 0 or key >= self.getlength():
             print('the given key is error')
             return False
         else:
@@ -129,11 +129,12 @@ class LinkList(object):
         """
             指定位置插入
         """
-        if self.is_empty() or index < 0 or index >self.getlength():
+        if self.is_empty() or index < 0 or index >= self.getlength():
             print('linklist is empty.')
             return False
         if index == 0:
             q = Node(item,self.head)
+            q.next = self.head
             self.head = q
             return True
         p = self.head
